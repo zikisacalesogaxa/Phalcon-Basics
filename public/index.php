@@ -7,9 +7,17 @@ use Phalcon\Url;
 use Phalcon\Mvc\Application;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
-define('BASE_PATH', dirname(__DIR__));
-define('APP_PATH', BASE_PATH . '/app');
+define('PHALCON_BASE_PATH', dirname(__DIR__));
+define('APP_PATH', PHALCON_BASE_PATH . '/app');
+define('PHALCON_VENDOR_PATH', PHALCON_BASE_PATH.'/vendor');
+
+// Load Composer's autoloader
+require_once PHALCON_VENDOR_PATH . '/autoload.php';
 // ...
+// Load dotenv?
+if (class_exists('Dotenv\Dotenv') && file_exists(PHALCON_BASE_PATH . '/.env')) {
+    (Dotenv\Dotenv::create(PHALCON_BASE_PATH))->load();
+}
 
 $loader = new Loader();
 
@@ -50,11 +58,11 @@ $container->set(
     function() {
         return new Mysql(
             [
-                'host'      =>  '127.0.0.1',
-                'port'      =>  '8889',
-                'username'  =>  'root',
-                'password'  =>  'root',
-                'dbname'    =>  'phalcon_basics_tutorial',
+                'host'      =>  getenv('DB_HOST'),
+                'port'      =>  getenv('DB_PORT'),
+                'username'  =>  getenv('DB_USERNAME'),
+                'password'  =>  getenv('DB_PASSWORD'),
+                'dbname'    =>  getenv('DB_DATABASE')
             ]
         );
     }
