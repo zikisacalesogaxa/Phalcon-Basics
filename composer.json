@@ -1,6 +1,7 @@
 {
     "require": {
         "phalcon/devtools": "^4.2",
-        "vlucas/phpdotenv": "^3.6"
+        "vlucas/phpdotenv": "^3.6",
+        "influxdata/influxdb-client-php": "^2.4"
     }
 }
