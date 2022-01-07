@@ -30,11 +30,14 @@ class SignupController extends Controller
 
         if ($success) {
             $message = "Thanks for registering!";
+            // $user = $user;
+            // $newUser = Users::findFirst(['email' => ]);
         } else {
             $message = "Sorry, the following problems were generated:<br>" . implode("<br>", $user->getMessages());
         }
 
         // passing a message to the view
         $this->view->message = $message;
+        $this->view->user = $this->request->getPost();
     }
 }

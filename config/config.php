@@ -10,6 +10,12 @@ $config =
             'dbname'    =>  getenv('DB_DATABASE')
         ],
         'influxDB' => [
-            'api_key' => getenv('API_TOKEN')
+            'api_key'   =>  getenv('API_TOKEN')
+        ],
+        'redis' => [
+            'host'      =>  'localhost',
+            'port'      =>  9000,
+            'prefix'    =>  'phalconBasix-',
+            'lifetime'  =>  1200
         ]
 );

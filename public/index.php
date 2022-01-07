@@ -45,23 +45,23 @@ $client = new Client([
     "token" => $token,
 ]);
 
-$writeApi = $client->createWriteApi();
+// $writeApi = $client->createWriteApi();
 
-$data = "mem,host=host1 used_percent=31.23";
+// $data = "mem,host=host1 used_percent=31.23";
 
-$writeApi->write($data, WritePrecision::S, $bucket, $org);
+// $writeApi->write($data, WritePrecision::S, $bucket, $org);
 
-$query = "from(bucket: \"zikisacalesogaxa's Bucket\") |> range(start: -1h)";
-$tables = $client->createQueryApi()->query($query, $org);
+// $query = "from(bucket: \"zikisacalesogaxa's Bucket\") |> range(start: -1h)";
+// $tables = $client->createQueryApi()->query($query, $org);
 
-foreach ($tables as $table) {
-    foreach ($table->records as $record) {
-        $time = $record->getTime();
-        $measurement = $record->getMeasurement();
-        $field = $record->getField();
-        $value = $record->getValue();
-    }
-}
+// foreach ($tables as $table) {
+//     foreach ($table->records as $record) {
+//         $time = $record->getTime();
+//         $measurement = $record->getMeasurement();
+//         $field = $record->getField();
+//         $value = $record->getValue();
+//     }
+// }
 
 $client->close();
 

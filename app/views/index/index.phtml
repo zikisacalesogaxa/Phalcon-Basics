@@ -10,7 +10,7 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 
-if ($users->count() > 0) {
+if (count($users) > 0) {
     ?>
     <table class="table table-bordered table-hover">
         <thead class="thead-light">
@@ -22,15 +22,16 @@ if ($users->count() > 0) {
         </thead>
         <tfoot>
         <tr>
-            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+            <td colspan="3">Users quantity: <?php echo count($users); ?></td>
         </tr>
         </tfoot>
         <tbody>
         <?php foreach ($users as $user) { ?>
+            <?php $user = explode('=', $user); ?>
             <tr>
-                <td><?php echo $user->id; ?></td>
-                <td><?php echo $user->name; ?></td>
-                <td><?php echo $user->email; ?></td>
+                <td><?php echo $user[0]; ?></td>
+                <td><?php echo $user[1]; ?></td>
+                <td><?php echo $user[2]; ?></td>
             </tr>
         <?php } ?>
         </tbody>
